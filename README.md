@@ -7,3 +7,4 @@ The purpose of this lab was to recreate the oscilloscope made in lab2 using a mi
 
 For lab 2, the following block diagram was used in planning:
 
+ ![alt tag](https://raw.githubusercontent.com/JohnTerragnoli/ECE383_Lab03/master/lab2Arch.jpg "lab02 schematic")
