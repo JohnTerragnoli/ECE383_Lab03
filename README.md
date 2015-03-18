@@ -19,4 +19,5 @@ Most notably, the finite state machine was removed and was to be replaced by the
 The design process along with everything I learned can be seen below: 
 
 #Process
-1. **Copying lab2 files into microblaze**  This would seem like an easy task, however, a lot of issues presented themselves.  Fortunately I learned a lot from this.  
+1. **Copying Lab2 Files into Microblaze**  This would seem like an easy task, however, a lot of issues presented themselves.  Fortunately I learned a lot from this.  First, the peripheral oscilloscope had to be created, since this is where the .vhd and .vhdl files would be placed for the project.  This was just like the tutorial and no errors occured.  Then I copied the appropriate files in from lab02.  Then I tried to create the bitstream.  Unfortunately, this took forever and I still got multiple errors.  The first errors were cryptic and hard to understand, but after asking C2 Jeremy Gruszka he pointed out that I needed to remove some of the librarys in lab2 and user_logic for it to compile correctly.  I followed his instructions and some of the errors went away, but not all of them.  I gave Jeremy a high five anyway.  Then I decided that the errors could be in a finite number of places, and they probably had to do with what we learned in homework 10 and 11.  I made a list, seen below: 
+2. **Initial Compilation List**
