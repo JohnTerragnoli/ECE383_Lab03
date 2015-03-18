@@ -14,3 +14,9 @@ For the most part, this same block diagram was used.  However, some modification
 ![alt tag](https://raw.githubusercontent.com/JohnTerragnoli/ECE383_Lab03/master/Pictures/Complete%20Schematic.JPG "lab03 schematic")
 
 Most notably, the finite state machine was removed and was to be replaced by the microblaze.  Also, the button logic was going to be written in the c code instead of VHDL.  Additionally, the way the information was stored and triggered also needed to be changed to incorporate a circular que, although this is not evident from the schematic.  
+
+
+The design process along with everything I learned can be seen below: 
+
+#Process
+1. **Copying lab2 files into microblaze**  This would seem like an easy task, however, a lot of issues presented themselves.  Fortunately I learned a lot from this.  
