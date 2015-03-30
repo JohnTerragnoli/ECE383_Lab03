@@ -226,9 +226,7 @@ User Ports Maped:
 	tmdsb => tmdsb,
 ```
 
-
-
-where does tmds go??
+Once all of these changes were made to the files .mpd, .mhs, .ucf, user_logic.vhd, .pao, and oscope_3.vhd, the bitstream was almost generated.  Then I remembered that last time I almost had an issue with the libraries on my datapath and lab2.  I decided to compare mine with the ones Sabin used to ensure I was not making a careless error.  
 
 remember to check the libraries on top of datapath.  
 
