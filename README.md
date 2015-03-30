@@ -226,7 +226,45 @@ User Ports Maped:
 	tmdsb => tmdsb,
 ```
 
-Once all of these changes were made to the files .mpd, .mhs, .ucf, user_logic.vhd, .pao, and oscope_3.vhd, the bitstream was almost generated.  Then I remembered that last time I almost had an issue with the libraries on my datapath and lab2.  I decided to compare mine with the ones Sabin used to ensure I was not making a careless error.  
+Once all of these changes were made to the files .mpd, .mhs, .ucf, user_logic.vhd, .pao, and oscope_3.vhd, the bitstream was almost generated.  Then I remembered that last time I almost had an issue with the libraries on my datapath and lab2.  I decided to compare mine with the ones Sabin used to ensure I was not making a careless error.  Lab2 and datapath were fine, but my fsm machine file had different libraries than he did.  
+
+Mine had 
+```
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.NUMERIC_STD.ALL;
+library UNISIM;
+use UNISIM.VComponents.all;
+```
+
+Sabin's Had: 
+```
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.NUMERIC_STD.ALL;
+library UNIMACRO;
+use UNIMACRO.vcomponents.all;
+use work.lab2Parts.all;		
+```
+
+I decided to use the union of two, shown below: 
+```
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.NUMERIC_STD.ALL;
+library UNISIM;
+use UNISIM.VComponents.all;
+library UNIMACRO;
+use UNIMACRO.vcomponents.all;
+use work.lab2Parts.all;		
+```
+
+
+
+you used a union of the libraries for lab2_fsm.vhd.  
+
+
+noticed that he had lab2parts in every single instantiation, does that mean there were no declarations anywhere?  that could be an issue.  
 
 remember to check the libraries on top of datapath.  
 
