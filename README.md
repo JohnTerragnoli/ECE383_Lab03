@@ -46,7 +46,6 @@ I tried generating a bitstream, but an error came within the first few seconds. 
 
 net axi_uartlite_0_TX_pin LOC=B16 | IOSTANDARD = LVCMOS33;
 ```
-
 I generated the bitstream successfully then uploaded it to SDK for a test. 
 
 5. **Testing Echo:** I used the code from the tutorial (lesson 17) to ensure that my UART was working correctly.  The code used can be shown below: 
@@ -68,6 +67,8 @@ int main(void)
  return 0;
 }
 ```
-The output from this code can be seen below: 
+The output from this code was 3 if you input a 1, and a 4 if a 2 was input.  Therefore, we know the board was getting a character, then adding "2" to it, then returning that value.  Looks like the UART is working properly.  
+
+6. *
 
 
