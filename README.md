@@ -291,7 +291,11 @@ int main(void)
 }
 ```
 
-When I did this, nothing showed up on the screen.  I decided to run one of my first tries at this project again.  When I did, at least a grid showed up on the screen from the FPGA.  Plus, the triggers moved back and forth.  I wanted to figure out the difference between these two projects, why one could put something on the screen and the other could not.  
+When I did this, nothing showed up on the screen.  I decided to run one of my first tries at this project again.  When I did, at least a grid showed up on the screen from the FPGA.  Plus, the triggers moved back and forth.  I wanted to figure out the difference between these two projects, why one could put something on the screen and the other could not.  First, I made sure that all of the files in the old project were present in the new one.  This was the case.  Then, in the new project, I decided to check what was going into the modules which ultimately produce the image on the screen.  Something there has to be different.  
+
+As I was comparing the new project I just created to the old one I abandoned, I noticed that the instantiation for my old project was not complete.  The Rbus_out and Lbus_out signals were not hooked up to the instantiation.  This made sense as to why the values for Rbus_out and Lbus_out were always showing up as zero then.  I decided to generate the bitstream for this old project after making the change to the instantiation.  Little did I know, that when I uploaded these changes to the FPGA, a little yellow showed up on the screen as I plugged in my audio jack.  I tried a signal, but nothing showed up.  I made the signal much louder, and then I saw that the upper half of the signal was in fact there.  The trigger appeared to be working, however, the signal seemed to be shifted much lower on the screen.  After noticing this, however, I just decided to stick with this old project I made.  
+
+**Fixing the Shift:**  I figured that this was probably caused by the trigger shift used in Lab02 to get the signal to set right.  If I changed this everything would probably go back to normal.  
 
 
 
