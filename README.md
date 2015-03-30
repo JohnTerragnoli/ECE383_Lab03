@@ -299,6 +299,10 @@ As I was comparing the new project I just created to the old one I abandoned, I 
 
 
 
+Replace the fsm logic with C code logic.  
+
+
+
 **These decisions might explain why this was not working:**
 
 1. you used a union of the libraries for lab2_fsm.vhd.  
