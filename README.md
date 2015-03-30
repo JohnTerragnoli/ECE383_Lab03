@@ -73,23 +73,23 @@ The output from this code was 3 if you input a 1, and a 4 if a 2 was input.  The
 7.  **Adding OScope Instance:** This was similar to creating the UART instance, except the base address was 0x83000000, and the .ucf was not altered just yet because not all the appropriate files were added and altered.  The following files were added.  
 
 
-ac97.vhd
-BRAM_counter.vhd
-comparator.vhd
-counter.vhd
-counter_glue.vhd
-dvid.vhdl
-flagRegister.vhd
-h_synch.vhd
-lab2.vhd
-lab2_datapath.vhd
-lab2_fsm.vhd
-lab2_pack.vhdl
-scopeFace.vhd
-tdms.vhdl
-vga.vhd
-video.vhdl
-v_synch.vhd
+- ac97.vhd
+- BRAM_counter.vhd
+- comparator.vhd
+- counter.vhd
+- counter_glue.vhd
+- dvid.vhdl
+- flagRegister.vhd
+- h_synch.vhd
+- lab2.vhd
+- lab2_datapath.vhd
+- lab2_fsm.vhd
+- lab2_pack.vhdl
+- scopeFace.vhd
+- tdms.vhdl
+- vga.vhd
+- video.vhdl
+- v_synch.vhd
 
 After doing this, I altered the .mpd, .mhs, .ucf, and user_logic.vhd of the oscope peripheral.  It did not bother me that I did not change the instantiations just yet for the buttons' sake.  I just really needed something to show up on the screen when a peripheral was used.  In order, the .mpd file was changed by: 
 
