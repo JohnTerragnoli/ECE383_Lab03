@@ -264,7 +264,7 @@ use work.lab2Parts.all;
 you used a union of the libraries for lab2_fsm.vhd.  
 
 
-noticed that he had lab2parts in every single instantiation, does that mean there were no declarations anywhere?  that could be an issue.  
+noticed that he had lab2parts in every single instantiation, does that mean there were no declarations anywhere?  that could be an issue.  next try removing all declarations and adding all of them to the pack and adding the pack to all of them.  
 
 remember to check the libraries on top of datapath.  
 
