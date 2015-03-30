@@ -291,6 +291,10 @@ int main(void)
 }
 ```
 
+When I did this, nothing showed up on the screen.  I decided to run one of my first tries at this project again.  When I did, at least a grid showed up on the screen from the FPGA.  Plus, the triggers moved back and forth.  I wanted to figure out the difference between these two projects, why one could put something on the screen and the other could not.  
+
+
+
 **These decisions might explain why this was not working:**
 
 1. you used a union of the libraries for lab2_fsm.vhd.  
