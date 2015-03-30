@@ -199,13 +199,40 @@ lib oscope_3_v1_00_a user_logic.vhd
 lib oscope_3_v1_00_a oscope_3.vhd
 ```
 
-Notice that all of the files which were added are present somewhere in the .pao file.  Also, the flagRegister.vhd file is commented out, because there is no instantiation in lab2 yet.  This will be done for A Functionality.  
+Notice that all of the files which were added are present somewhere in the .pao file.  Also, the flagRegister.vhd file is commented out, because there is no instantiation of the flagRegister in lab2 yet.  This will be done for A Functionality.  Right now something just needs to show up on the screen.  
 
+**oscope_3.vhd**  Last but not least, the oscope_3.vhd file was updated by adding the appropriate user ports and mapping them.  
+
+
+User Ports Added: 
+```
+	SDATA_IN : in std_logic; 
+	BIT_CLK : in std_logic; 
+	SYNC : out std_logic; 
+	SDATA_OUT : out std_logic; 
+	AC97_n_RESET : out STD_LOGIC;
+	tmds : out  STD_LOGIC_VECTOR (3 downto 0);
+	tmdsb : out  STD_LOGIC_VECTOR (3 downto 0);
+```
+
+User Ports Maped: 
+```
+	SDATA_IN =>SDATA_IN,
+	BIT_CLK => BIT_CLK,
+	SYNC => SYNC,
+	SDATA_OUT=>SDATA_OUT,
+	AC97_n_RESET=> AC97_n_RESET,
+	tmds =>tmds,
+	tmdsb => tmdsb,
+```
+
+
+
+where does tmds go??
+
+remember to check the libraries on top of datapath.  
 
 Still have to change the entities and such.  
 
-
-```
-```
 
 
