@@ -321,13 +321,13 @@ When I ran this code and pressed 'x' a couple of times, the exSel did in fact tu
 
 This means that the slave register responding to the toggle switch is at least working.  It is probably the internal exSel logic which is not working then.  
 
-
-
+So to check this I decided to go through the modules user_logic.vhd, lab2.vhd, and lab2_datapath.vhd, just to make sure the exSel signal was getting through properly.  I found a minor error where I forgot to pass exSel into the datapath.  I fixed this, generated the bitstream again, and tried running the toggle test again.  
 
 
 
 Replace the fsm logic with C code logic.  
 
+have a table for all of the slave registers!!!
 
 
 **These decisions might explain why this was not working:**
