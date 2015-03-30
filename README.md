@@ -259,9 +259,26 @@ use UNIMACRO.vcomponents.all;
 use work.lab2Parts.all;		
 ```
 
-After these libraries were added, I tried to generate a bitstream in this project.  I got the following error: 
+After these libraries were added, I tried to generate a bitstream in this project and it worked.  I then added this C code, which hopefully does nothing.  The idea is that it should run exactly the way it did in lab02.  
+```
+#include <xuartlite_l.h>
+#include <xparameters.h>
+
+int main(void)
+{
+ while (1){
 
 
+//  unsigned char c;
+//  c = XUartLite_RecvByte(0x84000000);
+//  XUartLite_SendByte(0x84000000, c + 2);
+
+
+ }//end while
+
+ return 0;
+}
+```
 
 **These decisions might explain why this was not working:**
 
