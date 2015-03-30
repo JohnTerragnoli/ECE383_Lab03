@@ -315,6 +315,12 @@ As I was comparing the new project I just created to the old one I abandoned, I 
     break;
 ```
 
+When I ran this code and pressed 'x' a couple of times, the exSel did in fact turn on and off, as noted by the picture below: 
+
+![alt tag](https://raw.githubusercontent.com/JohnTerragnoli/ECE383_Lab03/master/Pictures/Complete%20Schematic.JPG "toggle almost works")
+
+
+
 
 
 
