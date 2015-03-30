@@ -41,4 +41,33 @@ I tried generating a bitstream, but an error came within the first few seconds. 
 2. **Checking ISE Project Editor:** I ran this code to make sure I could still read something on my oscilloscope and move the triggers around with the buttons on the Xilix board.  I got these files from gitHub, because the Lab02, lab2_pack, and datapath files had all been altered to accomodate for Lab03.  It worked again like new.  
 3. **New Xilinx Project:** Then I created a new project name in Xilinx Platform Studio for lab03c.  This made sure to include the correct directories, the UART, and the appropriate peripherals.  
 4. **Adding the UART:**  In my last project, the reason the R and L bus kept showing up as blank could have been because I hooked up the UART wrong.  I decided to be extra careful in how I did it the second time.  I was sure to add the UART lite from the "Communication Slow Speed", to change its base address to 0x84000000, and add the following lines to the .ucf file.  
- 
+ ```
+ net axi_uartlite_0_RX_pin LOC=A16 | IOSTANDARD = LVCMOS33;
+
+net axi_uartlite_0_TX_pin LOC=B16 | IOSTANDARD = LVCMOS33;
+```
+
+I generated the bitstream successfully then uploaded it to SDK for a test. 
+
+5. **Testing Echo:** I used the code from the tutorial (lesson 17) to ensure that my UART was working correctly.  The code used can be shown below: 
+
+
+```
+#include <xuartlite_l.h>
+#include <xparameters.h>
+
+int main(void)
+{
+ while (1)
+ {
+  unsigned char c;
+  c = XUartLite_RecvByte(0x84000000);
+  XUartLite_SendByte(0x84000000, c + 2);
+ }
+
+ return 0;
+}
+```
+The output from this code can be seen below: 
+
+
