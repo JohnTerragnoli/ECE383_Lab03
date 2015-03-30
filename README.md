@@ -295,7 +295,28 @@ When I did this, nothing showed up on the screen.  I decided to run one of my fi
 
 As I was comparing the new project I just created to the old one I abandoned, I noticed that the instantiation for my old project was not complete.  The Rbus_out and Lbus_out signals were not hooked up to the instantiation.  This made sense as to why the values for Rbus_out and Lbus_out were always showing up as zero then.  I decided to generate the bitstream for this old project after making the change to the instantiation.  Little did I know, that when I uploaded these changes to the FPGA, a little yellow showed up on the screen as I plugged in my audio jack.  I tried a signal, but nothing showed up.  I made the signal much louder, and then I saw that the upper half of the signal was in fact there.  The trigger appeared to be working, however, the signal seemed to be shifted much lower on the screen.  After noticing this, however, I just decided to stick with this old project I made.  
 
-**Fixing the Shift:**  I figured that this was probably caused by the trigger shift used in Lab02 to get the signal to set right.  If I changed this everything would probably go back to normal.  
+**Fixing the Shift:**  I figured that this was probably caused by the trigger shift used in Lab02 to get the signal to set right.  If I changed this everything would probably go back to normal.  When I made the changes, only slight number changes in the C code were required to get the oscilloscope to trigger the same way it did in lab02.  
+
+
+**Programming exSel:**  I wanted to be able to toggle back and forth between Lab02 and Lab03 functionality using the exSel signal.  This just required some button logic in the C code, seeing that the exSel signals were already set up in the hardware code.  When the exSel is turned on, then for the time being the signal should just dissapear, since it's triggering mechanisms will not work and BRAM will not be filled appropriately.  The following C code was added to make 'x' the toggle button.  
+
+```
+    case 'x':
+
+    	if(Xil_In32(exSel)==0x00000001){
+    		Xil_Out32(exSel,0x00000000);
+    		xil_printf("	exSel  = %x\r\n",Xil_In32(exSel));
+
+
+    	}else if(Xil_In32(exSel) == 0x00000000){
+    		Xil_Out32(exSel,0x00000001);
+    		xil_printf("	exSel  = %x\r\n",Xil_In32(exSel));
+    	}
+    break;
+```
+
+
+
 
 
 
