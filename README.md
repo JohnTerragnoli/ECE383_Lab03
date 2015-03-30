@@ -91,7 +91,21 @@ The output from this code was 3 if you input a 1, and a 4 if a 2 was input.  The
 - video.vhdl
 - v_synch.vhd
 
-After doing this, I altered the .mpd, .mhs, .ucf, and user_logic.vhd of the oscope peripheral.  It did not bother me that I did not change the instantiations just yet for the buttons' sake.  I just really needed something to show up on the screen when a peripheral was used.  In order, the .mpd file was changed by: 
+After doing this, I altered the .mpd, .mhs, .ucf, and user_logic.vhd of the oscope peripheral.  It did not bother me that I did not change the instantiations just yet for the buttons' sake.  I just really needed something to show up on the screen when a peripheral was used.  In order, the .mpd file was changed by adding in the correct ports to the end of the port section.  The code added can be seen below: 
+
+```
+### I added this#######################################
+PORT SDATA_IN = "", DIR = I
+PORT BIT_CLK = "", DIR = I
+PORT SYNC = "", DIR = O
+PORT SDATA_OUT = "", DIR = O
+PORT AC97_n_RESET = "", DIR = O
+PORT tmds = "", DIR = O, VEC=[3:0]
+PORT tmdsb = "", DIR = O, VEC=[3:0]
+########################################################
+```
+
+I saved the file and moved onto the .mhs file.  Technically this should update on it's own, but I clicked the "rescan user repositories" and checked the .mhs just in case.  It appears to have updated correctly on its own.  
 
 
 Still have to change the entities and such.  
