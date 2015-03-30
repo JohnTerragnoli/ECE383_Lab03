@@ -259,6 +259,7 @@ use UNIMACRO.vcomponents.all;
 use work.lab2Parts.all;		
 ```
 
+After these libraries were added, I tried to generate a bitstream in this project.  
 
 
 
