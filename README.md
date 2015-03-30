@@ -335,5 +335,23 @@ have a table for all of the slave registers!!!
 
 **Draw Contant Using Slave Registers:**  Wanted to make sure that when I enabled the exLbus, exRbus, exSel, exWen, and exWrAddr, I could hardcode an image onto the monitor.  
 
+I tried adding this code to hardcode a horizontal and diagonal lines. 
+
+```
+void testWrite(){
+	int i;
+
+	for(i = 0; i<620; i++){
+		Xil_Out32(exLbus,i);
+		Xil_Out32(exRbus,centerVolt-20);
+		Xil_Out32(exWrAddr,i);
+		Xil_Out32(exWen,1);
+		Xil_Out32(exWen,0);
+	}
+}
+```
+
+Oddly enough, the sinusoid just dissapeared when I turned the exSel on.  I tried messing around with the numbers I put into the C code.   In the "for" loop, I made the lower and upper bounds lowerVolt and upperVolt.  When I did this, I got the left half of the screen as a sinusoid and the other half blank.  This did not make a ton of sense.  
+
 
 
