@@ -69,6 +69,6 @@ int main(void)
 ```
 The output from this code was 3 if you input a 1, and a 4 if a 2 was input.  Therefore, we know the board was getting a character, then adding "2" to it, then returning that value.  Looks like the UART is working properly.  
 
-6. *
+6. **Adding OScope Peripheral:**  Tried again to create this peripheral.  This was done carefully and everything that I did is written below.  Clicked the "hardware -> import peripheral -> create template for new peripheral -> to EDK repository (left default) -> named it oscope_3 -> AXI-4LITE -> only "include data phase timer" and user logic software register" checked" -> made the number of software accessible registers to be 16 -> (next) -> (next) -> "generate ISE and XST Project files" checked -> (finish).  I created 16 slave registers so it would be easier to talk and so different pieces of data would not have to be mixed.  
 
 
