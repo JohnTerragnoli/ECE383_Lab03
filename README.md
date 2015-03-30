@@ -128,11 +128,10 @@ The added user ports are shown below:
 	 AC97_n_RESET						  : out std_logic;
 	 tmds								  	  : out std_logic_vector(3 downto 0);
 	 tmdsb								  : out std_logic_vector(3 downto 0);
-	 ```
+```
 	 
-	 The added internal signals are shown below: 
-	
-	 ```
+The added internal signals are shown below: 
+```
 	signal exWr : std_logic_vector(9 downto 0);
 	signal exWen : std_logic;
 	signal exSel : std_logic;
@@ -159,6 +158,14 @@ lab02 :  lab2
      tmdsb => tmdsb,
 			  btn => "00000",
 			  JB => open);
+```
+
+The lines for the first three slave registers are shown below: 
+
+```
+      when "1000000000000000" => slv_ip2bus_data <= "0000000000000000" & Lbus_out;			--slv0
+      when "0100000000000000" => slv_ip2bus_data <= "0000000000000000" & Rbus_out;			--slv1
+      when "0010000000000000" => slv_ip2bus_data <= "000000000000000000000000" & flagQ ;	--slv2
 ```
 
 
