@@ -259,7 +259,12 @@ use UNIMACRO.vcomponents.all;
 use work.lab2Parts.all;		
 ```
 
-After these libraries were added, I tried to generate a bitstream in this project.  
+After these libraries were added, I tried to generate a bitstream in this project.  I got the following error: 
+
+```
+ERROR:HDLCompiler:1314 - "C:/Xilinx/14.7/ISE_DS/edk_user_repository/MyProcessorIPLib/pcores/oscope_3_v1_00_a/hdl/vhdl/user_logic.vhd" Line 222: Formal port/generic <jb> is not declared in <lab2>
+```
+At first I was confused, then I realized this is because I did not mention jb in any of the other files.  I just decided to get rid of the signal altogether.  This meant in the entity, declaration in the pack, the lab2 instantiation, and handling the datapath's use of the jb signal.  
 
 
 
