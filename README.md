@@ -112,12 +112,23 @@ PORT tmdsb = "", DIR = O, VEC=[3:0]
 **.ucf** Next I moved onto the .ucf file, which was largely copied from lab2.  The following lines of code were added to the .ucf file:
 
 ```
-NET "BIT_CLK" LOC = L13;
-NET "SDATA_IN" LOC = T18;
-NET "SDATA_OUT" LOC = N16;
-NET "SYNC" LOC = U17;
-NET "AC97_n_RESET" LOC = T17;
+NET "oscope_3_0_tmds_pin(0)"	LOC = "D8" | IOSTANDARD = TMDS_33 ; # Blue
+NET "oscope_3_0_tmdsb_pin(0)"	LOC = "C8" | IOSTANDARD = TMDS_33 ;
+NET "oscope_3_0_tmds_pin(1)"	LOC = "C7" | IOSTANDARD = TMDS_33 ; # Red
+NET "oscope_3_0_tmdsb_pin(1)"	LOC = "A7" | IOSTANDARD = TMDS_33 ;
+NET "oscope_3_0_tmds_pin(2)"	LOC = "B8" | IOSTANDARD = TMDS_33 ; # Green
+NET "oscope_3_0_tmdsb_pin(2)"	LOC = "A8" | IOSTANDARD = TMDS_33 ;
+NET "oscope_3_0_tmds_pin(3)"	LOC = "B6" | IOSTANDARD = TMDS_33 ; # Clock
+NET "oscope_3_0_tmdsb_pin(3)"	LOC = "A6" | IOSTANDARD = TMDS_33 ;
+
+NET "oscope_3_0_BIT_CLK_pin" LOC = L13;
+NET "oscope_3_0_SDATA_IN_pin" LOC = T18;
+NET "oscope_3_0_SDATA_OUT_pin" LOC = N16;
+NET "oscope_3_0_SYNC_pin" LOC = U17;
 ```
+
+As this was done, I went into the system assembly view and made the ports on the oscope peripheral to be external. 
+
 
 **user_logic** Then I updated the user_logic.vhd file, which included adding the user ports, internal signals, which would be used later, a lab2.vhd instantiation, and would later involve changing the first three read slave registers.  Note, the lab2 instantiation was not perfect the first time, as I just wanted to get a waveform to show up on the screen.  Baby steps.  
 
