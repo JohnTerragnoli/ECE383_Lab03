@@ -72,7 +72,7 @@ The output from this code was 3 if you input a 1, and a 4 if a 2 was input.  The
 6. **Adding OScope Peripheral:**  Tried again to create this peripheral.  This was done carefully and everything that I did is written below.  Clicked the "hardware -> import peripheral -> create template for new peripheral -> to EDK repository (left default) -> named it oscope_3 -> AXI-4LITE -> only "include data phase timer" and user logic software register" checked" -> made the number of software accessible registers to be 16 -> (next) -> (next) -> "generate ISE and XST Project files" checked -> (finish).  I created 16 slave registers so it would be easier to talk and so different pieces of data would not have to be mixed.  
 7.  **Adding OScope Instance:** This was similar to creating the UART instance, except the base address was 0x83000000, and the .ucf was not altered just yet because not all the appropriate files were added and altered.  The following files were added.  
 
-
+**Adding Files**
 - ac97.vhd
 - BRAM_counter.vhd
 - comparator.vhd
@@ -91,7 +91,9 @@ The output from this code was 3 if you input a 1, and a 4 if a 2 was input.  The
 - video.vhdl
 - v_synch.vhd
 
-After doing this, I altered the .mpd, .mhs, .ucf, user_logic.vhd, .pao, and oscope_3.vhd of the oscope peripheral.  It did not bother me that I did not change the instantiations just yet for the buttons' sake.  I just really needed something to show up on the screen when a peripheral was used.  In order, the .mpd file was changed by adding in the correct ports to the end of the port section.  The code added can be seen below: 
+After doing this, I altered the .mpd, .mhs, .ucf, user_logic.vhd, .pao, and oscope_3.vhd of the oscope peripheral.  It did not bother me that I did not change the instantiations just yet for the buttons' sake.  I just really needed something to show up on the screen when a peripheral was used.  
+
+**.mpd** The .mpd file was changed by adding in the correct ports to the end of the port section.  The code added can be seen below: 
 
 ```
 ### I added this#######################################
@@ -105,9 +107,9 @@ PORT tmdsb = "", DIR = O, VEC=[3:0]
 ########################################################
 ```
 
-I saved the file and moved onto the .mhs file.  Technically this should update on it's own, but I clicked the "rescan user repositories" and checked the .mhs just in case.  It appears to have updated correctly on its own.  
+**.mhs** I saved the file and moved onto the .mhs file.  Technically this should update on it's own, but I clicked the "rescan user repositories" and checked the .mhs just in case.  It appears to have updated correctly on its own.  
 
-Next I moved onto the .ucf file, which was largely copied from lab2.  The following lines of code were added to the .ucf file:
+**.ucf** Next I moved onto the .ucf file, which was largely copied from lab2.  The following lines of code were added to the .ucf file:
 
 ```
 NET "BIT_CLK" LOC = L13;
@@ -117,7 +119,7 @@ NET "SYNC" LOC = U17;
 NET "AC97_n_RESET" LOC = T17;
 ```
 
-Then I updated the user_logic.vhd file, which included adding the user ports, internal signals, which would be used later, a lab2.vhd instantiation, and would later involve changing the first three read slave registers.  Note, the lab2 instantiation was not perfect the first time, as I just wanted to get a waveform to show up on the screen.  Baby steps.  
+**user_logic** Then I updated the user_logic.vhd file, which included adding the user ports, internal signals, which would be used later, a lab2.vhd instantiation, and would later involve changing the first three read slave registers.  Note, the lab2 instantiation was not perfect the first time, as I just wanted to get a waveform to show up on the screen.  Baby steps.  
 
 The added user ports are shown below: 
 ```
@@ -167,6 +169,34 @@ The lines for the first three slave registers are shown below:
       when "0100000000000000" => slv_ip2bus_data <= X"0000" & Rbus_out;			--slv1
       when "0010000000000000" => slv_ip2bus_data <= X"000000" & flagQ ;			--slv2
 ```
+
+**.pao** As for the .pao file, the files used in the program had to be added in order from internal to external.  The order which was chosen is shown below: 
+
+```
+lib oscope_3_v1_00_a lab2_pack.vhdl
+lib oscope_3_v1_00_a counter.vhd
+lib oscope_3_v1_00_a counter_glue.vhd
+lib oscope_3_v1_00_a h_synch.vhd
+lib oscope_3_v1_00_a v_synch.vhd
+lib oscope_3_v1_00_a scopeFace.vhd
+lib oscope_3_v1_00_a tdms.vhdl
+lib oscope_3_v1_00_a vga.vhd
+lib oscope_3_v1_00_a dvid.vhdl
+lib oscope_3_v1_00_a video.vhdl
+
+lib oscope_3_v1_00_a ac97.vhd
+
+lib oscope_3_v1_00_a BRAM_counter.vhd
+lib oscope_3_v1_00_a comparator.vhd
+lib oscope_3_v1_00_a flagRegister.vhd
+lib oscope_3_v1_00_a lab2_datapath.vhd
+lib oscope_3_v1_00_a lab2_fsm.vhd
+lib oscope_3_v1_00_a lab2.vhd
+lib oscope_3_v1_00_a user_logic.vhd
+lib oscope_3_v1_00_a oscope_3.vhd
+```
+
+Notice that all of the files which were added are present somewhere in the .pao file.  
 
 
 Still have to change the entities and such.  
