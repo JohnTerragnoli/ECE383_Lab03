@@ -149,23 +149,23 @@ lab02 :  lab2
     Port map ( 
      clk => Bus2IP_Clk,
      reset => Bus2IP_Resetn,
-			  SDATA_IN => SDATA_IN,
-			  BIT_CLK=> BIT_CLK, 
-			  SYNC =>SYNC,
-			  SDATA_OUT =>SDATA_OUT,
-			  AC97_n_RESET => AC97_n_RESET,
-  			tmds  => tmds,
+     SDATA_IN => SDATA_IN,
+     BIT_CLK=> BIT_CLK, 
+     SYNC =>SYNC,
+     SDATA_OUT =>SDATA_OUT,
+     AC97_n_RESET => AC97_n_RESET,
+     tmds  => tmds,
      tmdsb => tmdsb,
-			  btn => "00000",
-			  JB => open);
+     btn => "00000",
+     JB => open);
 ```
 
 The lines for the first three slave registers are shown below: 
 
 ```
-      when "1000000000000000" => slv_ip2bus_data <= "0000000000000000" & Lbus_out;			--slv0
-      when "0100000000000000" => slv_ip2bus_data <= "0000000000000000" & Rbus_out;			--slv1
-      when "0010000000000000" => slv_ip2bus_data <= "000000000000000000000000" & flagQ ;	--slv2
+      when "1000000000000000" => slv_ip2bus_data <= X"0000" & Lbus_out;			--slv0
+      when "0100000000000000" => slv_ip2bus_data <= X"0000" & Rbus_out;			--slv1
+      when "0010000000000000" => slv_ip2bus_data <= X"000000" & flagQ ;			--slv2
 ```
 
 
