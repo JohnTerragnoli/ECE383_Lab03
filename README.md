@@ -298,7 +298,7 @@ As I was comparing the new project I just created to the old one I abandoned, I 
 **Fixing the Shift:**  I figured that this was probably caused by the trigger shift used in Lab02 to get the signal to set right.  If I changed this everything would probably go back to normal.  When I made the changes, only slight number changes in the C code were required to get the oscilloscope to trigger the same way it did in lab02.  
 
 
-**Programming exSel:**  I wanted to be able to toggle back and forth between Lab02 and Lab03 functionality using the exSel signal.  This just required some button logic in the C code, seeing that the exSel signals were already set up in the hardware code.  When the exSel is turned on, then for the time being the signal should just dissapear, since it's triggering mechanisms will not work and BRAM will not be filled appropriately.  The following C code was added to make 'x' the toggle button.  
+**Programming exSel:**  I wanted to be able to toggle back and forth between Lab02 and Lab03 functionality using the exSel signal.  This just required some button logic in the C code, seeing that the exSel signals were already set up in the hardware code.  When the exSel is turned on, then for the time being the signal should just freeze, since it's triggering mechanisms will not work and BRAM will not be filled appropriately.  The following C code was added to make 'x' the toggle button.  
 
 ```
     case 'x':
@@ -315,13 +315,13 @@ As I was comparing the new project I just created to the old one I abandoned, I 
     break;
 ```
 
-When I ran this code and pressed 'x' a couple of times, the exSel did in fact turn on and off, as noted by the picture below: 
+When I ran this code and pressed 'x' a couple of times, the exSel did not freeze but the exSel itself was changing, as noted by the picture below: 
 
 ![alt tag](https://raw.githubusercontent.com/JohnTerragnoli/ECE383_Lab03/master/Pictures/Toggle%20Slave%20Works.PNG "toggle almost works")
 
 This means that the slave register responding to the toggle switch is at least working.  It is probably the internal exSel logic which is not working then.  
 
-So to check this I decided to go through the modules user_logic.vhd, lab2.vhd, and lab2_datapath.vhd, just to make sure the exSel signal was getting through properly.  I found a minor error where I forgot to pass exSel into the datapath.  I fixed this, generated the bitstream again, and tried running the toggle test again.  
+So to check this I decided to go through the modules user_logic.vhd, lab2.vhd, and lab2_datapath.vhd, just to make sure the exSel signal was getting through properly.  I found a minor error where I forgot to pass exSel into the datapath.  I fixed this, generated the bitstream again, and tried running the toggle test again.  It worked!  The signal froze when the exSel was turned on.  
 
 
 
