@@ -173,6 +173,9 @@ The lines for the first three slave registers are shown below:
 **.pao** As for the .pao file, the files used in the program had to be added in order from internal to external.  The order which was chosen is shown below: 
 
 ```
+lib proc_common_v3_00_a  all 
+lib axi_lite_ipif_v1_01_a  all 
+
 lib oscope_3_v1_00_a lab2_pack.vhdl
 lib oscope_3_v1_00_a counter.vhd
 lib oscope_3_v1_00_a counter_glue.vhd
@@ -188,7 +191,7 @@ lib oscope_3_v1_00_a ac97.vhd
 
 lib oscope_3_v1_00_a BRAM_counter.vhd
 lib oscope_3_v1_00_a comparator.vhd
-lib oscope_3_v1_00_a flagRegister.vhd
+##lib oscope_3_v1_00_a flagRegister.vhd
 lib oscope_3_v1_00_a lab2_datapath.vhd
 lib oscope_3_v1_00_a lab2_fsm.vhd
 lib oscope_3_v1_00_a lab2.vhd
@@ -196,7 +199,7 @@ lib oscope_3_v1_00_a user_logic.vhd
 lib oscope_3_v1_00_a oscope_3.vhd
 ```
 
-Notice that all of the files which were added are present somewhere in the .pao file.  
+Notice that all of the files which were added are present somewhere in the .pao file.  Also, the flagRegister.vhd file is commented out, because there is no instantiation in lab2 yet.  This will be done for A Functionality.  
 
 
 Still have to change the entities and such.  
