@@ -91,7 +91,10 @@ vga.vhd
 video.vhdl
 v_synch.vhd
 
+After doing this, I altered the .mpd, .mhs, .ucf, and user_logic.vhd of the oscope peripheral.  It did not bother me that I did not change the instantiations just yet for the buttons' sake.  I just really needed something to show up on the screen when a peripheral was used.  In order, the .mpd file was changed by: 
 
+
+Still have to change the entities and such.  
 
 
 ```
