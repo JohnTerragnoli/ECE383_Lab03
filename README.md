@@ -91,7 +91,7 @@ The output from this code was 3 if you input a 1, and a 4 if a 2 was input.  The
 - video.vhdl
 - v_synch.vhd
 
-After doing this, I altered the .mpd, .mhs, .ucf, and user_logic.vhd of the oscope peripheral.  It did not bother me that I did not change the instantiations just yet for the buttons' sake.  I just really needed something to show up on the screen when a peripheral was used.  In order, the .mpd file was changed by adding in the correct ports to the end of the port section.  The code added can be seen below: 
+After doing this, I altered the .mpd, .mhs, .ucf, user_logic.vhd, .pao, and oscope_3.vhd of the oscope peripheral.  It did not bother me that I did not change the instantiations just yet for the buttons' sake.  I just really needed something to show up on the screen when a peripheral was used.  In order, the .mpd file was changed by adding in the correct ports to the end of the port section.  The code added can be seen below: 
 
 ```
 ### I added this#######################################
@@ -106,6 +106,60 @@ PORT tmdsb = "", DIR = O, VEC=[3:0]
 ```
 
 I saved the file and moved onto the .mhs file.  Technically this should update on it's own, but I clicked the "rescan user repositories" and checked the .mhs just in case.  It appears to have updated correctly on its own.  
+
+Next I moved onto the .ucf file, which was largely copied from lab2.  The following lines of code were added to the .ucf file:
+
+```
+NET "BIT_CLK" LOC = L13;
+NET "SDATA_IN" LOC = T18;
+NET "SDATA_OUT" LOC = N16;
+NET "SYNC" LOC = U17;
+NET "AC97_n_RESET" LOC = T17;
+```
+
+Then I updated the user_logic.vhd file, which included adding the user ports, internal signals, which would be used later, a lab2.vhd instantiation, and would later involve changing the first three read slave registers.  Note, the lab2 instantiation was not perfect the first time, as I just wanted to get a waveform to show up on the screen.  Baby steps.  
+
+The added user ports are shown below: 
+```
+	 SDATA_IN							  : in std_logic;
+	 BIT_CLK								  : in std_logic;
+	 SYNC								  	  : out std_logic;
+	 SDATA_OUT							  : out std_logic;
+	 AC97_n_RESET						  : out std_logic;
+	 tmds								  	  : out std_logic_vector(3 downto 0);
+	 tmdsb								  : out std_logic_vector(3 downto 0);
+	 ```
+	 
+	 The added internal signals are shown below: 
+	
+	 ```
+	signal exWr : std_logic_vector(9 downto 0);
+	signal exWen : std_logic;
+	signal exSel : std_logic;
+	signal Lbus_out : std_logic_vector (15 downto 0); 
+	signal Rbus_out : std_logic_vector (15 downto 0); 
+	signal exLbus : std_logic_vector (15 downto 0);  
+	signal exRbus : std_logic_vector (15 downto 0);  	  
+	signal flagQ : std_logic_vector(7 downto 0);  	 
+	signal flagClear : std_logic_vector(7 downto 0);  	 
+```
+
+The lab2.vhd instantiation is shown below: 
+```
+lab02 :  lab2 
+    Port map ( 
+     clk => Bus2IP_Clk,
+     reset => Bus2IP_Resetn,
+			  SDATA_IN => SDATA_IN,
+			  BIT_CLK=> BIT_CLK, 
+			  SYNC =>SYNC,
+			  SDATA_OUT =>SDATA_OUT,
+			  AC97_n_RESET => AC97_n_RESET,
+  			tmds  => tmds,
+     tmdsb => tmdsb,
+			  btn => "00000",
+			  JB => open);
+```
 
 
 Still have to change the entities and such.  
