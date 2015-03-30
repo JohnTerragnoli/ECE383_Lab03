@@ -39,5 +39,5 @@ I tried generating a bitstream, but an error came within the first few seconds. 
 
 12. **Starting Over:** A couple of days into spring break I started getting a little desperate, especially because there was no one there to help answer my technical questions.  I kept all of my old code, but decided to start all over, as if I were doing it for the first time.  This included checking in ISE Project editor to make sure lab02 was still working.  
 13. **Checking ISE Project Editor:** I ran this code to make sure I could still read something on my oscilloscope and move the triggers around with the buttons on the Xilix board.  I got these files from gitHub, because the Lab02, lab2_pack, and datapath files had all been altered to accomodate for Lab03.  It worked again like new.  
-14. **New Xilinx Project:** Then I created a new project name in Xilinx Project Studio for lab03c.  This made sure to include
+14. **New Xilinx Project:** Then I created a new project name in Xilinx Platform Studio for lab03c.  This made sure to include
 14. 
