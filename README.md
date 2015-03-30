@@ -332,10 +332,8 @@ have a table for all of the slave registers!!!
 
 **These decisions might explain why this was not working:**
 
-1. you used a union of the libraries for lab2_fsm.vhd.  
-2. noticed that he had lab2parts in every single instantiation, does that mean there were no declarations anywhere?  that could be an issue.  next try removing all declarations and adding all of them to the pack and adding the pack to all of them.
-3. remember to check the libraries on top of datapath.  
-4. Still have to change the entities and such.  
+
+**Draw Contant Using Slave Registers:**  Wanted to make sure that when I enabled the exLbus, exRbus, exSel, exWen, and exWrAddr, I could hardcode an image onto the monitor.  
 
 
 
