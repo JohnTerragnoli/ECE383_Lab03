@@ -353,5 +353,7 @@ void testWrite(){
 
 Oddly enough, the sinusoid just dissapeared when I turned the exSel on.  I tried messing around with the numbers I put into the C code.   In the "for" loop, I made the lower and upper bounds lowerVolt and upperVolt.  When I did this, I got the left half of the screen as a sinusoid and the other half blank.  This did not make a ton of sense, because it should have just drawn two straight lines.  I went back to check how my exRbus and ExLbus signals were being hooked up, to make sure they were actually feeding into the video module.  
 
+exRbus and exLbus both appeared to be hooked up correctly.  I then tried making my exWen signal enabled all the time, so see if I could just get the signal to write over the entire screen.  
+
 
 
