@@ -36,3 +36,6 @@ The design process along with everything I learned can be seen below:
 ##lib oscilloscope_2_v1_00_a ac97_wrapper.vhd
 ```
 I tried generating a bitstream, but an error came within the first few seconds.  I thought I might be missing the files, but I checked to see if the files were included in Sabin's code, and they weren't there.  So if his code was working without them then surely I did not need them, especially because my Lab02 code worked without them. I decided to remove the .pao files and at least the gitstream generated again, even though it didn't work still.  
+
+12. **Starting Over:** A couple of days into spring break I started getting a little desperate, especially because there was no one there to help answer my technical questions.  I kept all of my old code, but decided to start all over, as if I were doing it for the first time.  This included checking in ISE Project editor to make sure lab02 was still working.  
+13. **Checking ISE Project Editor:** I ran this code to make sure I could still read something on my oscilloscope and move the triggers around with the buttons on the Xilix board.  I got these files from gitHub, because the Lab02, lab2_pack, and datapath files had all been altered to accomodate for Lab03.  
