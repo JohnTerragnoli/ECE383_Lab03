@@ -406,9 +406,13 @@ int i;
 	
 	This is odd because it seems like at least something should show up on the screen.  
 	
+**Code**
+All of my code can be seen at this [link](https://github.com/JohnTerragnoli/ECE383_Lab03/tree/master/code).
+
 	
 	
-#Documentation: 
+	
+**Documentation**
 C2C Park tried talking me through some ideas for the circular queue for required functionality.  
 
 
