@@ -355,5 +355,61 @@ Oddly enough, the sinusoid just dissapeared when I turned the exSel on.  I tried
 
 exRbus and exLbus both appeared to be hooked up correctly.  I then tried making my exWen signal enabled all the time, so see if I could just get the signal to write over the entire screen.  Changing the exWen signal like this did not seem to have any effect.  
 
+**Circular Queue:** I tried adding the following C code to get required functionaity, but it did not work. 
+
+```
+int i;
+
+
+	//collecting datapoints.
+	for(i = 0; i<600; i++){
+		R_data[i] = Xil_In32(Rbus_out) + 200 + 0b1000000000000000;
+		L_data[i] = Xil_In32(Lbus_out) + 200 + 0b1000000000000000;
+	}
+
+
+	//finding where the beginning of the data should be found.
+	for(i = 0; i<601; i++){
+		if((Xil_In32(triggerVolt) > (L_data[i] >> 6))&&
+				Xil_In32(triggerVolt) < (L_data[i-1] >> 6)){
+
+			beginningIndex = i;
+					break;
+		}
+	}
+
+	index = beginningIndex;
+	index += 16;
+
+	triggerTimeIndex = Xil_In16(triggerTime);
+
+	//writing the information to BRAM.
+	for(i = 0; i<601; i++){
+		Xil_Out32(exWrAddr, triggerTimeIndex);
+
+		//get the needed data to the BRAM1!
+		Xil_Out32(exLbus, L_data[triggerTimeIndex+2]);
+		Xil_Out32(exRbus, R_data[triggerTimeIndex]);
+
+		Xil_Out32(exSel, triggerTimeIndex);
+		Xil_Out32(exWen, triggerTimeIndex);
+
+		index++;
+		triggerTimeIndex++;
+
+		if(index==601){
+			index = 0;
+		}
+	}
+	```
+	
+	
+	This is odd because it seems like at least something should show up on the screen.  
+	
+	
+	
+#Documentation: 
+C2C Park tried talking me through some ideas for the circular queue for required functionality.  
+
 
 
